@@ -1,11 +1,22 @@
 package com.eduardo.crud.service;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.eduardo.crud.model.Product;
+import com.eduardo.crud.repository.ProductRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
+@RequiredArgsConstructor
 public class ProductService {
-    @GetMapping("/name/{productName}")
-    public Product getProductByName(@PathVariable("productName") String productName) {
+    private final ProductRepository productRepository;
 
+    public Product findByName(String productName) {
+        return productRepository.findByName(productName);
+    }
+
+    public Product save(Product product) {
+        product.setId(null);
+
+        return productRepository.save(product);
     }
 }
