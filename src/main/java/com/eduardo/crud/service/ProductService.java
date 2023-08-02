@@ -19,4 +19,8 @@ public class ProductService {
 
         return productRepository.save(product);
     }
+
+    public void deleteById(String id) {
+        productRepository.deleteById(id);
+    }
 }

@@ -20,4 +20,11 @@ public class ProductController {
     public Product createProduct(@RequestBody Product product) {
         return productService.save(product);
     }
+
+    @DeleteMapping("/delete/{productId}")
+    public String deleteProduct(@PathVariable String productId) {
+        productService.deleteById(productId);
+
+        return "Deleted successfully";
+    }
 }
